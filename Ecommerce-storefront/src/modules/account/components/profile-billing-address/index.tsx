@@ -7,7 +7,7 @@ import NativeSelect from "@modules/common/components/native-select"
 
 import AccountInfo from "../account-info"
 import { HttpTypes } from "@medusajs/types"
-import { addCustomerAddress, updateCustomerAddress } from "@lib/data/customer"
+import { clientAddCustomerAddress, clientUpdateCustomerAddress } from "@lib/client-utils"
 
 type MyInformationProps = {
   customer: HttpTypes.StoreCustomer
@@ -49,7 +49,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
   }
 
   const [state, formAction] = useActionState(
-    billingAddress ? updateCustomerAddress : addCustomerAddress,
+    billingAddress ? clientUpdateCustomerAddress : clientAddCustomerAddress,
     initialState
   )
 

@@ -1,8 +1,8 @@
 "use client"
 
 import { RadioGroup, Radio } from "@headlessui/react"
-import { setShippingMethod } from "@lib/data/cart"
-import { calculatePriceForShippingOption } from "@lib/data/fulfillment"
+import { clientSetShippingMethod } from "@lib/client-utils"
+import { clientCalculatePriceForShippingOption } from "@lib/client-utils"
 import { convertToLocale } from "@lib/util/money"
 import { CheckCircleSolid, Loader } from "@medusajs/icons"
 import { HttpTypes } from "@medusajs/types"
@@ -86,7 +86,7 @@ const Shipping: React.FC<ShippingProps> = ({
     if (_shippingMethods?.length) {
       const promises = _shippingMethods
         .filter((sm) => sm.price_type === "calculated")
-        .map((sm) => calculatePriceForShippingOption(sm.id, cart.id))
+        .map((sm) => clientCalculatePriceForShippingOption(sm.id, cart.id))
 
       if (promises.length) {
         Promise.allSettled(promises).then((res) => {
@@ -133,7 +133,7 @@ const Shipping: React.FC<ShippingProps> = ({
       return id
     })
 
-    await setShippingMethod({ cartId: cart.id, shippingMethodId: id })
+    await clientSetShippingMethod({ cartId: cart.id, shippingMethodId: id })
       .catch((err) => {
         setShippingMethodId(currentId)
 

@@ -3,7 +3,7 @@
 import { Badge, Heading, Input, Label, Text } from "@medusajs/ui"
 import React from "react";
 
-import { applyPromotions } from "@lib/data/cart"
+import { clientApplyPromotions } from "@lib/client-utils"
 import { convertToLocale } from "@lib/util/money"
 import { HttpTypes } from "@medusajs/types"
 import Trash from "@modules/common/icons/trash"
@@ -26,7 +26,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
       (promotion) => promotion.code !== code
     )
 
-    await applyPromotions(
+    await clientApplyPromotions(
       validPromotions.filter((p) => p.code === undefined).map((p) => p.code!)
     )
   }
@@ -45,7 +45,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
     codes.push(code.toString())
 
     try {
-      await applyPromotions(codes)
+      await clientApplyPromotions(codes)
     } catch (e: any) {
       setErrorMessage(e.message)
     }

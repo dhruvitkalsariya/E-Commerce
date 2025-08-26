@@ -1,7 +1,7 @@
 "use client"
 
 import { isManual, isStripe } from "@lib/constants"
-import { placeOrder } from "@lib/data/cart"
+import { clientPlaceOrder } from "@lib/client-utils"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
 import { useElements, useStripe } from "@stripe/react-stripe-js"
@@ -57,7 +57,7 @@ const StripePaymentButton = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const onPaymentCompleted = async () => {
-    await placeOrder()
+    await clientPlaceOrder()
       .catch((err) => {
         setErrorMessage(err.message)
       })
@@ -156,7 +156,7 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const onPaymentCompleted = async () => {
-    await placeOrder()
+    await clientPlaceOrder()
       .catch((err) => {
         setErrorMessage(err.message)
       })

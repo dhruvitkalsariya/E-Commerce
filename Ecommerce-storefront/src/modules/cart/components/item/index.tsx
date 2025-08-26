@@ -1,7 +1,7 @@
 "use client"
 
 import { Table, Text, clx } from "@medusajs/ui"
-import { updateLineItem } from "@lib/data/cart"
+import { clientUpdateLineItem } from "@lib/client-utils"
 import { HttpTypes } from "@medusajs/types"
 import CartItemSelect from "@modules/cart/components/cart-item-select"
 import ErrorMessage from "@modules/checkout/components/error-message"
@@ -28,11 +28,11 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
     setError(null)
     setUpdating(true)
 
-    await updateLineItem({
+    await clientUpdateLineItem({
       lineId: item.id,
       quantity,
     })
-      .catch((err) => {
+      .catch((err: any) => {
         setError(err.message)
       })
       .finally(() => {

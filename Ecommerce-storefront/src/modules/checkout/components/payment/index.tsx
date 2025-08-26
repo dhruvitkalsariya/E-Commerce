@@ -2,7 +2,7 @@
 
 import { RadioGroup } from "@headlessui/react"
 import { isStripe as isStripeFunc, paymentInfoMap } from "@lib/constants"
-import { initiatePaymentSession } from "@lib/data/cart"
+import { clientInitiatePaymentSession } from "@lib/client-utils"
 import { CheckCircleSolid, CreditCard } from "@medusajs/icons"
 import { Button, Container, Heading, Text, clx } from "@medusajs/ui"
 import ErrorMessage from "@modules/checkout/components/error-message"
@@ -44,7 +44,7 @@ const Payment = ({
     setError(null)
     setSelectedPaymentMethod(method)
     if (isStripeFunc(method)) {
-      await initiatePaymentSession(cart, {
+      await clientInitiatePaymentSession(cart, {
         provider_id: method,
       })
     }
@@ -82,7 +82,7 @@ const Payment = ({
         activeSession?.provider_id === selectedPaymentMethod
 
       if (!checkActiveSession) {
-        await initiatePaymentSession(cart, {
+        await clientInitiatePaymentSession(cart, {
           provider_id: selectedPaymentMethod,
         })
       }

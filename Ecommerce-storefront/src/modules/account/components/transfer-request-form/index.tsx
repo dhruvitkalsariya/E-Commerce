@@ -1,7 +1,7 @@
 "use client"
 
 import { useActionState } from "react"
-import { createTransferRequest } from "@lib/data/orders"
+import { clientCreateTransferRequest } from "@lib/client-utils"
 import { Text, Heading, Input, Button, IconButton, Toaster } from "@medusajs/ui"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import { CheckCircleMiniSolid, XCircleSolid } from "@medusajs/icons"
@@ -10,7 +10,7 @@ import { useEffect, useState } from "react"
 export default function TransferRequestForm() {
   const [showSuccess, setShowSuccess] = useState(false)
 
-  const [state, formAction] = useActionState(createTransferRequest, {
+  const [state, formAction] = useActionState(clientCreateTransferRequest, {
     success: false,
     error: null,
     order: null,

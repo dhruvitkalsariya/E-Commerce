@@ -1,4 +1,4 @@
-import { login } from "@lib/data/customer"
+import { clientLogin } from "@lib/client-utils"
 import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
@@ -10,7 +10,7 @@ type Props = {
 }
 
 const Login = ({ setCurrentView }: Props) => {
-  const [message, formAction] = useActionState(login, null)
+  const [message, formAction] = useActionState(clientLogin, null)
 
   return (
     <div

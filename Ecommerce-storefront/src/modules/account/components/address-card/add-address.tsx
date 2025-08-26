@@ -10,7 +10,7 @@ import Input from "@modules/common/components/input"
 import Modal from "@modules/common/components/modal"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import { HttpTypes } from "@medusajs/types"
-import { addCustomerAddress } from "@lib/data/customer"
+import { clientAddCustomerAddress } from "@lib/client-utils"
 
 const AddAddress = ({
   region,
@@ -22,7 +22,7 @@ const AddAddress = ({
   const [successState, setSuccessState] = useState(false)
   const { state, open, close: closeModal } = useToggleState(false)
 
-  const [formState, formAction] = useActionState(addCustomerAddress, {
+  const [formState, formAction] = useActionState(clientAddCustomerAddress, {
     isDefaultShipping: addresses.length === 0,
     success: false,
     error: null,

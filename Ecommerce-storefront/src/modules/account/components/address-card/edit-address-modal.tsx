@@ -13,8 +13,8 @@ import { SubmitButton } from "@modules/checkout/components/submit-button"
 import { HttpTypes } from "@medusajs/types"
 import {
   deleteCustomerAddress,
-  updateCustomerAddress,
-} from "@lib/data/customer"
+  clientUpdateCustomerAddress,
+} from "@lib/client-utils"
 
 type EditAddressProps = {
   region: HttpTypes.StoreRegion
@@ -31,7 +31,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
   const [successState, setSuccessState] = useState(false)
   const { state, open, close: closeModal } = useToggleState(false)
 
-  const [formState, formAction] = useActionState(updateCustomerAddress, {
+  const [formState, formAction] = useActionState(clientUpdateCustomerAddress, {
     success: false,
     error: null,
     addressId: address.id,

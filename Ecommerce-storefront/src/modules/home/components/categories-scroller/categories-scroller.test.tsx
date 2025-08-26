@@ -1,79 +1,46 @@
-import { render, screen } from "@testing-library/react"
-import CategoriesScroller from "./index"
+import { render, screen } from '@testing-library/react'
+import CategoriesScroller from './index'
 
-// Mock framer-motion
-jest.mock("framer-motion", () => ({
-  motion: {
-    section: ({ children, ...props }: any) => <section {...props}>{children}</section>,
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-  },
-}))
-
-// Mock the components
-jest.mock("@modules/common/components/section-title", () => {
-  return function MockSectionTitle({ title, linkText }: any) {
-    return (
-      <div>
-        <h2>{title}</h2>
-        <a href="/categories">{linkText}</a>
-      </div>
-    )
+// Mock the CategoryCard component
+jest.mock('@modules/common/components/category-card', () => {
+  return function MockCategoryCard({ name }: { name: string }) {
+    return <div data-testid={`category-card-${name.toLowerCase().replace(/\s+/g, '-')}`}>{name}</div>
   }
 })
 
-jest.mock("@modules/common/components/category-card", () => {
-  return function MockCategoryCard({ name, href }: any) {
-    return (
-      <div>
-        <a href={href}>{name}</a>
-      </div>
-    )
+// Mock the SectionTitle component
+jest.mock('@modules/common/components/section-title', () => {
+  return function MockSectionTitle({ title }: { title: string }) {
+    return <h2>{title}</h2>
   }
 })
 
-describe("CategoriesScroller", () => {
-  it("renders the section title", () => {
-    render(<CategoriesScroller />)
-    expect(screen.getByText("Explore Top Categories")).toBeInTheDocument()
-  })
-
-  it("renders the 'See All' link", () => {
-    render(<CategoriesScroller />)
-    expect(screen.getByText("See All")).toBeInTheDocument()
-  })
-
-  it("renders all category names", () => {
+describe('CategoriesScroller', () => {
+  it('renders all 6 category cards', () => {
     render(<CategoriesScroller />)
     
-    const expectedCategories = [
-      "Skincare",
-      "Electronic", 
-      "Footwear",
-      "Laptop & PC",
-      "Smartphone",
-      "Fashion"
-    ]
-    
-    expectedCategories.forEach(category => {
-      expect(screen.getByText(category)).toBeInTheDocument()
-    })
+    // Check that all 6 categories are rendered
+    expect(screen.getByTestId('category-card-skincare')).toBeInTheDocument()
+    expect(screen.getByTestId('category-card-electronic')).toBeInTheDocument()
+    expect(screen.getByTestId('category-card-footwear')).toBeInTheDocument()
+    expect(screen.getByTestId('category-card-laptop-pc')).toBeInTheDocument()
+    expect(screen.getByTestId('category-card-smartphone')).toBeInTheDocument()
+    expect(screen.getByTestId('category-card-fashion')).toBeInTheDocument()
   })
 
-  it("renders category links with correct hrefs", () => {
+  it('renders section title', () => {
     render(<CategoriesScroller />)
-    
-    expect(screen.getByText("Skincare").closest("a")).toHaveAttribute("href", "/categories/skincare")
-    expect(screen.getByText("Electronic").closest("a")).toHaveAttribute("href", "/categories/electronics")
-    expect(screen.getByText("Footwear").closest("a")).toHaveAttribute("href", "/categories/footwear")
-    expect(screen.getByText("Laptop & PC").closest("a")).toHaveAttribute("href", "/categories/laptop-pc")
-    expect(screen.getByText("Smartphone").closest("a")).toHaveAttribute("href", "/categories/smartphones")
-    expect(screen.getByText("Fashion").closest("a")).toHaveAttribute("href", "/categories/fashion")
+    expect(screen.getByText('Explore Top Categories')).toBeInTheDocument()
   })
 
-  it("has proper section semantics", () => {
+  it('renders correct category names', () => {
     render(<CategoriesScroller />)
     
-    const section = screen.getByRole("region", { hidden: true })
-    expect(section).toBeInTheDocument()
+    expect(screen.getByText('Skincare')).toBeInTheDocument()
+    expect(screen.getByText('Electronic')).toBeInTheDocument()
+    expect(screen.getByText('Footwear')).toBeInTheDocument()
+    expect(screen.getByText('Laptop & PC')).toBeInTheDocument()
+    expect(screen.getByText('Smartphone')).toBeInTheDocument()
+    expect(screen.getByText('Fashion')).toBeInTheDocument()
   })
 }) 

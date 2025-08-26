@@ -6,14 +6,14 @@ import { LOGIN_VIEW } from "@modules/account/templates/login-template"
 import ErrorMessage from "@modules/checkout/components/error-message"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { signup } from "@lib/data/customer"
+import { clientSignup } from "@lib/client-utils"
 
 type Props = {
   setCurrentView: (view: LOGIN_VIEW) => void
 }
 
 const Register = ({ setCurrentView }: Props) => {
-  const [message, formAction] = useActionState(signup, null)
+  const [message, formAction] = useActionState(clientSignup, null)
 
   return (
     <div

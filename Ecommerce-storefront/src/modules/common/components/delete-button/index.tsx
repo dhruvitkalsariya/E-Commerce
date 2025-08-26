@@ -1,4 +1,4 @@
-import { deleteLineItem } from "@lib/data/cart"
+import { clientDeleteLineItem } from "@lib/client-utils"
 import { Spinner, Trash } from "@medusajs/icons"
 import { clx } from "@medusajs/ui"
 import { useState } from "react"
@@ -16,7 +16,7 @@ const DeleteButton = ({
 
   const handleDelete = async (id: string) => {
     setIsDeleting(true)
-    await deleteLineItem(id).catch((err) => {
+    await clientDeleteLineItem(id).catch((err: any) => {
       setIsDeleting(false)
     })
   }

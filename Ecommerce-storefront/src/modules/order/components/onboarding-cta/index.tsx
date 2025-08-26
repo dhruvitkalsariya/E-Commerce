@@ -1,6 +1,6 @@
 "use client"
 
-import { resetOnboardingState } from "@lib/data/onboarding"
+import { clientResetOnboardingState } from "@lib/client-utils"
 import { Button, Container, Text } from "@medusajs/ui"
 
 const OnboardingCta = ({ orderId }: { orderId: string }) => {
@@ -16,7 +16,7 @@ const OnboardingCta = ({ orderId }: { orderId: string }) => {
         <Button
           className="w-fit"
           size="xlarge"
-          onClick={() => resetOnboardingState(orderId)}
+          onClick={() => clientResetOnboardingState(orderId)}
         >
           Complete setup in admin
         </Button>

@@ -1,6 +1,6 @@
 "use client"
 
-import { addToCart } from "@lib/data/cart"
+import { clientAddToCart } from "@lib/client-utils"
 import { useIntersection } from "@lib/hooks/use-in-view"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
@@ -104,7 +104,7 @@ export default function ProductActions({
 
     setIsAdding(true)
 
-    await addToCart({
+    await clientAddToCart({
       variantId: selectedVariant.id,
       quantity: 1,
       countryCode,
