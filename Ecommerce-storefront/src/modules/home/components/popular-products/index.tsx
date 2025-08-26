@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import ProductCard from "@modules/common/components/product-card"
-import { SectionContainer, SectionHeader } from "@modules/common/components/ui-components"
+import { SectionHeader } from "@modules/common/components/ui-components"
 
 // Sample data for development - will be replaced with Medusa.js API calls
 const sampleProducts = [
