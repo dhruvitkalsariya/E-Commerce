@@ -83,6 +83,7 @@ module.exports = {
         circle: "9999px",
       },
       maxWidth: {
+        "7xl": "80rem",
         "8xl": "100rem",
       },
       screens: {
@@ -111,6 +112,7 @@ module.exports = {
           "sans-serif",
         ],
         inter: ["Inter", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       keyframes: {
         ring: {

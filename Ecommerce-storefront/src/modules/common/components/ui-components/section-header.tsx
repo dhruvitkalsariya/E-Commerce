@@ -4,6 +4,7 @@ interface SectionHeaderProps {
   title: string
   subtitle?: string
   actionText?: string
+  actionLink?: string
   onActionClick?: () => void
   actionIcon?: React.ReactNode
   className?: string
@@ -15,6 +16,7 @@ export default function SectionHeader({
   title,
   subtitle,
   actionText,
+  actionLink,
   onActionClick,
   actionIcon,
   className,
@@ -58,13 +60,25 @@ export default function SectionHeader({
         )}
       </div>
       {actionText && (
-        <button
-          onClick={onActionClick}
-          className="flex items-center space-x-2 text-sm md:text-base text-purple-800 font-medium hover:underline transition-colors duration-200"
-        >
-          {actionIcon && <span>{actionIcon}</span>}
-          <span>{actionText}</span>
-        </button>
+        actionLink ? (
+          <a
+            href={actionLink}
+            className="flex items-center space-x-2 text-sm md:text-base text-purple-800 font-medium hover:no-underline transition-colors duration-200"
+            onClick={onActionClick}
+          >
+            {actionIcon && <span>{actionIcon}</span>}
+            <span>{actionText}</span>
+          </a>
+        ) : (
+          <a
+            href="./"
+            className="flex items-center space-x-2 text-sm md:text-base text-purple-800 font-medium hover:no-underline transition-colors duration-200"
+            onClick={onActionClick}
+          >
+            {actionIcon && <span>{actionIcon}</span>}
+            <span>{actionText}</span>
+          </a>
+        )
       )}
     </div>
   )

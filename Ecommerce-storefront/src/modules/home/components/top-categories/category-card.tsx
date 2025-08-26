@@ -13,7 +13,7 @@ export default function CategoryCard({ name, image, index }: CategoryCardProps) 
       className={clx(
         "bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-3 sm:p-4",
         "relative cursor-pointer group overflow-hidden",
-        "border border-gray-100 hover:border-purple-200"
+        "border border-gray-100 hover:border-purple-200",        
       )}
     >
       {/* Image Container - 100% width with overflow hidden */}
