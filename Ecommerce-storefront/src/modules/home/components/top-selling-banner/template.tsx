@@ -23,7 +23,7 @@ const TopSellingBannerTemplate = ({ product, className = "" }: TopSellingBannerT
     description: "Lorem ipsum dolor sit amet consectetur. Ultrices nunc vitae rhoncus nisl. Orci vitae habitasse amet integer.",
     originalPrice: 2999,
     discountedPrice: 1999,
-    image: "/assets/shopvora/Top-selling-banner.png"
+    image: "/assets/Shopvora/Top-selling-banner.png"
   }
 
   const displayProduct = product || defaultProduct

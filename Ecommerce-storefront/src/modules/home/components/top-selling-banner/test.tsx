@@ -10,7 +10,7 @@ const TopSellingBannerTest = () => {
     description: "Classic white sneakers with iconic red and navy stripes. Perfect for everyday style and comfort.",
     originalPrice: 3499,
     discountedPrice: 2499,
-    image: "/assets/shopvora/Top-selling-banner.png"
+    image: "/assets/Shopvora/banners/Top-selling-banner.png"
   }
 
   return (

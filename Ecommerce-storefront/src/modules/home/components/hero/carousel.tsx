@@ -13,7 +13,7 @@ const carouselSlides = [
     subtitle: "SPECIAL OFFERS",
     cta: "SHOP NOW!",
     tagline: "NEW YEAR EDITION PROMOTION",
-    backgroundImage: "/assets/shopvora/carrousel_background.png",
+    backgroundImage: "/assets/Shopvora/backgrounds/carrousel_background.png",
     alt: "Big Sale Special Offer Banner"
   },
   {
@@ -22,7 +22,7 @@ const carouselSlides = [
     subtitle: "POPULAR PRODUCTS",
     cta: "EXPLORE NOW!",
     tagline: "BEST SELLERS COLLECTION",
-    backgroundImage: "/assets/shopvora/Top-selling-banner.png",
+    backgroundImage: "/assets/Shopvora/banners/Top-selling-banner.png",
     alt: "Top Selling Products Banner"
   },
   {
@@ -31,7 +31,7 @@ const carouselSlides = [
     subtitle: "FRESH COLLECTION",
     cta: "DISCOVER NOW!",
     tagline: "LATEST TRENDS 2024",
-    backgroundImage: "/assets/shopvora/carrousel_background.png",
+    backgroundImage: "/assets/Shopvora/backgrounds/carrousel_background.png",
     alt: "New Arrivals Banner"
   }
 ]

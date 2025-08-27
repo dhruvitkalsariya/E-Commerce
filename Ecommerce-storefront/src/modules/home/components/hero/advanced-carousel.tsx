@@ -11,31 +11,31 @@ import { CarouselSlide, CarouselProps } from "./types"
 const defaultSlides: CarouselSlide[] = [
   {
     id: 1,
-    image: "/assets/shopvora/carrousel_background.png",
+    image: "/assets/Shopvora/carrousel_background.png",
     alt: "Big Sale Special Offer Banner",
     link: "/products/sale"
   },
   {
     id: 2,
-    image: "/assets/shopvora/carrousel_background.png",
+    image: "/assets/Shopvora/carrousel_background.png",
     alt: "Top Selling Products Banner",
     link: "/products/top-selling"
   },
   {
     id: 3,
-    image: "/assets/shopvora/carrousel_background.png",
+    image: "/assets/Shopvora/carrousel_background.png",
     alt: "Laptop Products Banner",
     link: "/products/laptops"
   },
   {
     id: 4,
-    image: "/assets/shopvora/carrousel_background.png",
+    image: "/assets/Shopvora/carrousel_background.png",
     alt: "Footwear Products Banner",
     link: "/products/footwear"
   },
   {
     id: 5,
-    image: "/assets/shopvora/carrousel_background.png",
+    image: "/assets/Shopvora/carrousel_background.png",
     alt: "Smartphone Products Banner",
     link: "/products/smartphones"
   }

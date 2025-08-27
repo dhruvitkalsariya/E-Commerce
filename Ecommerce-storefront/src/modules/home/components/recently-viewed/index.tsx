@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ProductCard from "@modules/common/components/product-card"
 import { SectionHeader, SectionContainer } from "@modules/common/components/ui-components"
+import { clientRetrieveCustomer } from "@lib/client-utils"
 
-// Sample data for development - will be replaced with Medusa.js API calls
-const sampleProducts = [
+// Sample data for development - will be replaced with actual recently viewed products
+const sampleRecentlyViewedProducts = [
   {
     id: "1",
     title: "Laptop intel core",
@@ -63,23 +64,38 @@ const sampleProducts = [
   }
 ]
 
-// TODO: Replace with actual Medusa.js data fetching
-// This will be replaced with real API calls to get popular products
-const usePopularProducts = () => {
+// TODO: Replace with actual recently viewed products data fetching
+const useRecentlyViewedProducts = () => {
   // Placeholder for actual data fetching
-  // const { data: products, isLoading, error } = useQuery(['popular-products'], fetchPopularProducts)
+  // const { data: products, isLoading, error } = useQuery(['recently-viewed'], fetchRecentlyViewedProducts)
   
   // For now, return sample data for development
   return {
-    products: sampleProducts,
+    products: sampleRecentlyViewedProducts,
     isLoading: false,
     error: null
   }
 }
 
-export default function PopularProducts() {
+export default function RecentlyViewed() {
   const [wishlistedProducts, setWishlistedProducts] = useState<Set<string>>(new Set())
-  const { products, isLoading, error } = usePopularProducts()
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null)
+  const { products, isLoading, error } = useRecentlyViewedProducts()
+
+  // Check if user is logged in
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      try {
+        const customer = await clientRetrieveCustomer()
+        setIsLoggedIn(!!customer)
+      } catch (error) {
+        console.error('Error checking auth status:', error)
+        setIsLoggedIn(false)
+      }
+    }
+
+    checkAuthStatus()
+  }, [])
 
   const handleWishlistToggle = (productId: string) => {
     setWishlistedProducts(prev => {
@@ -98,11 +114,21 @@ export default function PopularProducts() {
     console.log("Navigate to product:", productId)
   }
 
+  // Don't render if user is not logged in
+  if (isLoggedIn === false) {
+    return null
+  }
+
+  // Show loading state while checking auth
+  if (isLoggedIn === null) {
+    return null
+  }
+
   if (isLoading) {
     return (
-      <SectionContainer>
+      <SectionContainer background="gray">
         <SectionHeader
-          title="Popular Products"
+          title="Recently Viewed"
           actionText="See All"
           actionLink="/products"
           onActionClick={() => console.log("See All Products")}
@@ -119,31 +145,31 @@ export default function PopularProducts() {
 
   if (error) {
     return (
-      <SectionContainer>
+      <SectionContainer background="gray">
         <SectionHeader
-          title="Popular Products"
+          title="Recently Viewed"
           actionText="See All"
           actionLink="/products"
           onActionClick={() => console.log("See All Products")}
         />
         <div className="text-center py-8 text-gray-500">
-          Failed to load popular products
+          Failed to load recently viewed products
         </div>
       </SectionContainer>
     )
   }
 
   return (
-    <SectionContainer>
+    <SectionContainer background="gray">
       <SectionHeader
-        title="Popular Products"
+        title="Recently Viewed"
         actionText="See All"
         actionLink="/products"
         onActionClick={() => console.log("See All Products")}
       />
       
       {/* Products Grid - Will be populated with real data */}
-      <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mt-8">
         {products.map((product: any) => (
           <ProductCard
             key={product.id}

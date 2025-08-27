@@ -1,6 +1,7 @@
 // Layout Components
 export { default as PageHeader } from "./page-header"
 export { default as SectionHeader } from "./section-header"
+export { default as SectionContainer } from "./section-container"
 
 // Grid and Layout
 export { default as ResponsiveGrid } from "./responsive-grid"

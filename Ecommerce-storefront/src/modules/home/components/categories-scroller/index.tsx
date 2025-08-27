@@ -18,42 +18,42 @@ const CategoriesScroller = () => {
       id: "skincare",
       name: "Skincare",
       href: "/categories/skincare",
-      imageSrc: "/assets/shopvora/Skincare-Categories.png",
+      imageSrc: "/assets/Shopvora/Categories-section-images/Skincare-Categories.png",
       imageAlt: "Skincare products and cosmetics"
     },
     {
       id: "electronic",
       name: "Electronic",
       href: "/categories/electronics",
-      imageSrc: "/assets/shopvora/Electroinc-Categories.png",
+      imageSrc: "/assets/Shopvora/Categories-section-images/Electroinc-Categories.png",
       imageAlt: "Electronic devices and appliances"
     },
     {
       id: "footwear",
       name: "Footwear",
       href: "/categories/footwear",
-      imageSrc: "/assets/shopvora/Footwear-Categories.png",
+      imageSrc: "/assets/Shopvora/Categories-section-images/Footwear-Categories.png",
       imageAlt: "Shoes and footwear"
     },
     {
       id: "laptop-pc",
       name: "Laptop & PC",
       href: "/categories/laptop-pc",
-      imageSrc: "/assets/shopvora/Laptop&pc-Categories.png",
+      imageSrc: "/assets/Shopvora/Categories-section-images/Laptop&pc-Categories.png",
       imageAlt: "Laptops and computers"
     },
     {
       id: "smartphone",
       name: "Smartphone",
       href: "/categories/smartphones",
-      imageSrc: "/assets/shopvora/Smartphone-Categories.png",
+      imageSrc: "/assets/Shopvora/Categories-section-images/Smartphone-Categories.png",
       imageAlt: "Smartphones and mobile devices"
     },
     {
       id: "fashion",
       name: "Fashion",
       href: "/categories/fashion",
-      imageSrc: "/assets/shopvora/Fashion-Categories.png",
+      imageSrc: "/assets/Shopvora/Categories-section-images/Fashion-Categories.png",
       imageAlt: "Fashion and clothing"
     }
   ]

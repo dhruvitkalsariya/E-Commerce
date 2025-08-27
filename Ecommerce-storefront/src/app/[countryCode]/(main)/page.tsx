@@ -3,9 +3,12 @@ import { Metadata } from "next"
 import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import TopCategories from "@modules/home/components/top-categories"
+import TopDeals from "@modules/home/components/top-deals"
 import PopularProducts from "@modules/home/components/popular-products"
 import TopSellingBanner from "@modules/home/components/top-selling-banner"
 import ExploreNewCollection from "@modules/home/components/explore-new-collection"
+import RecentlyViewed from "@modules/home/components/recently-viewed"
+
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
@@ -37,8 +40,10 @@ export default async function Home(props: {
       <Hero />
       <TopCategories />
       <PopularProducts />
+      <RecentlyViewed />
       <TopSellingBanner />
       <ExploreNewCollection />
+      <TopDeals />
     </>
   )
 }

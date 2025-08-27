@@ -10,7 +10,7 @@ const ShopvoraLogo = () => {
     >
       {/* Logo from Figma */}
       <Image
-        src="/assets/shopvora/Logo.svg"
+        src="/assets/Shopvora/logo/Logo.svg"
         alt="Shopvora"
         width={188}
         height={40}

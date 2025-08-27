@@ -16,7 +16,7 @@ export const getNewCollectionItems = (): NewCollectionItem[] => {
       id: "us-polo",
       title: "U.S. Polo Assn., Highlande…",
       discount: "10-40% OFF",
-      imageSrc: "/assets/shopvora/Shows-new-collection.png",
+      imageSrc: "/assets/Shopvora/new-collection/shows-new-collection.png",
       imageAlt: "U.S. Polo Assn. white sneakers",
       href: "/collections/us-polo"
     },
@@ -24,7 +24,7 @@ export const getNewCollectionItems = (): NewCollectionItem[] => {
       id: "bags-luggage",
       title: "Bags, Trolleys, Luggage...",
       discount: "10-40% OFF",
-      imageSrc: "/assets/shopvora/bags-new-collection.png",
+      imageSrc: "/assets/Shopvora/new-collection/bags-new-collection.png",
       imageAlt: "Collection of bags, trolleys and luggage",
       href: "/collections/bags-luggage"
     },
@@ -32,7 +32,7 @@ export const getNewCollectionItems = (): NewCollectionItem[] => {
       id: "sweatshirts",
       title: "Sweatshirts, Hoodies, Jac…",
       discount: "10-40% OFF",
-      imageSrc: "/assets/shopvora/shirt-new-collection.png",
+      imageSrc: "/assets/Shopvora/new-collection/shirt-new-collection.png",
       imageAlt: "Man wearing red sweatshirt",
       href: "/collections/sweatshirts"
     },
@@ -40,7 +40,7 @@ export const getNewCollectionItems = (): NewCollectionItem[] => {
       id: "handbags",
       title: "Crazy Deals on Handbags",
       discount: "10-40% OFF",
-      imageSrc: "/assets/shopvora/purse-new-collection.png",
+      imageSrc: "/assets/Shopvora/new-collection/purse-new-collection.png",
       imageAlt: "Red handbag",
       href: "/collections/handbags"
     },
@@ -48,7 +48,7 @@ export const getNewCollectionItems = (): NewCollectionItem[] => {
       id: "kurta-sets",
       title: "Kurta Sets",
       discount: "10-40% OFF",
-      imageSrc: "/assets/shopvora/kurti-new-collection.png",
+      imageSrc: "/assets/Shopvora/new-collection/kurti-new-collection.png",
       imageAlt: "Woman wearing maroon Kurta set",
       href: "/collections/kurta-sets"
     }
