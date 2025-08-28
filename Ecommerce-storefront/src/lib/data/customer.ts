@@ -108,23 +108,37 @@ export async function login(_currentState: unknown, formData: FormData) {
   const email = formData.get("email") as string
   const password = formData.get("password") as string
 
-  try {
-    await sdk.auth
-      .login("customer", "emailpass", { email, password })
-      .then(async (token) => {
-        await setAuthToken(token as string)
-        const customerCacheTag = await getCacheTag("customers")
-        revalidateTag(customerCacheTag)
-      })
-  } catch (error: any) {
-    return error.toString()
+  console.log("Login attempt for email:", email ? `${email.substring(0, 3)}***@${email.split('@')[1]}` : 'undefined')
+
+  if (!email || !password) {
+    console.error("Login failed: Missing email or password")
+    return "Email and password are required"
   }
 
   try {
-    await transferCart()
+    const token = await sdk.auth.login("customer", "emailpass", { email, password })
+    console.log("Authentication successful, setting token")
+    
+    await setAuthToken(token as string)
+    const customerCacheTag = await getCacheTag("customers")
+    revalidateTag(customerCacheTag)
+    
+    console.log("Token set and cache revalidated")
   } catch (error: any) {
-    return error.toString()
+    console.error("Authentication failed:", error.message || error)
+    return `Authentication failed: ${error.message || error.toString()}`
   }
+
+  try {
+    console.log("Attempting to transfer cart")
+    await transferCart()
+    console.log("Cart transfer successful")
+  } catch (error: any) {
+    console.error("Cart transfer failed:", error.message || error)
+    // Don't fail the login if cart transfer fails
+  }
+
+  return { success: true }
 }
 
 export async function signout(countryCode: string) {

@@ -227,11 +227,30 @@ export const clientApplyPromotions = async (promotionData: any) => {
 
 export const clientSignup = async (formData: FormData) => {
   try {
+    if (!formData) {
+      console.error("Client signup: formData is null or undefined")
+      throw new Error("Form data is required")
+    }
+    
+    console.log("Client signup attempt - formData entries:")
+    Array.from(formData.entries()).forEach(([key, value]) => {
+      console.log(`${key}: ${key === 'password' ? '[HIDDEN]' : value}`)
+    })
+    
     const response = await fetch('/api/customer/signup', {
       method: 'POST',
       body: formData,
     })
+    
+    console.log("Signup response status:", response.status)
+    
     const data = await response.json()
+    console.log("Signup response data:", data)
+    
+    if (!response.ok) {
+      throw new Error(data.error || 'Signup failed')
+    }
+    
     return data.result
   } catch (error) {
     console.error('Error during signup:', error)
@@ -241,11 +260,30 @@ export const clientSignup = async (formData: FormData) => {
 
 export const clientLogin = async (formData: FormData) => {
   try {
+    if (!formData) {
+      console.error("Client login: formData is null or undefined")
+      throw new Error("Form data is required")
+    }
+    
+    console.log("Client login attempt - formData entries:")
+    Array.from(formData.entries()).forEach(([key, value]) => {
+      console.log(`${key}: ${key === 'password' ? '[HIDDEN]' : value}`)
+    })
+    
     const response = await fetch('/api/customer/login', {
       method: 'POST',
       body: formData,
     })
+    
+    console.log("Login response status:", response.status)
+    
     const data = await response.json()
+    console.log("Login response data:", data)
+    
+    if (!response.ok) {
+      throw new Error(data.error || 'Login failed')
+    }
+    
     return data.result
   } catch (error) {
     console.error('Error during login:', error)
